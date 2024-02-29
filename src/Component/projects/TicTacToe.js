@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./tictactoe.css";
+import clickSound from "../../Assets/click.wav";
+import winSound from "../../Assets/win.wav";
 
 const TicTacToe = () => {
 
@@ -12,6 +14,9 @@ const TicTacToe = () => {
 
     const [playerTurn, setPlayerTurn] = useState(currentPlayer);
 
+    const audio = new Audio(clickSound);
+    const winAudio = new Audio(winSound);
+
     const changePlayerTurn = () => {
         if (playerTurn === currentPlayer) {
             setPlayerTurn(nextPlayer);
@@ -21,9 +26,11 @@ const TicTacToe = () => {
     }
 
     const playGame = (e) => {
+        audio.play();
         if (e.target.innerHTML === "") {
             e.target.innerHTML = playerTurn;
             if (checkWin()) {
+                winAudio.play();
                 setWinner(playerTurn);
                 disableGameCells();
             } else if (checkTie()) {
@@ -91,6 +98,7 @@ const TicTacToe = () => {
     }
 
     const restart = () => {
+        audio.play();
         const gameCells = document.querySelectorAll(".cell");
 
         gameCells.forEach(cell => {
@@ -104,6 +112,7 @@ const TicTacToe = () => {
     }
 
     const start = () => {
+        audio.play();
         setStartGame(true);
         restart();
     }
@@ -126,11 +135,12 @@ const TicTacToe = () => {
                 <div className='cell' onClick={(e) => playGame(e)}></div>
                 <div className='cell' onClick={(e) => playGame(e)}></div>
             </div>
+            {winner && (<p className='win'>{winner === currentPlayer ? "Player 1" : "Player 2"} is a Winner 🏆</p>)}
             {!startGame ? (<button className='restart-btn' onClick={() => start()}>Start</button>) :
                 (<button className='restart-btn' onClick={() => restart()}>Restart</button>)}
             {startGame && (<div className='players'>
-                <div className={`player player1 ${playerTurn === currentPlayer ? 'active' : ''}`}><span>Player 1: <b dangerouslySetInnerHTML={{__html: currentPlayer}} /></span>{winner === currentPlayer && (<p className='win'>Winner</p>)}</div>
-                <div className={`player player2 ${playerTurn === nextPlayer ? 'active' : ''}`}><span>Player 2: <b dangerouslySetInnerHTML={{__html: nextPlayer}} /></span>{winner === nextPlayer && (<p className='win'>Winner</p>)}</div>
+                <div className={`player player1 ${playerTurn === currentPlayer ? 'active' : ''}`}><span>Player 1: <b dangerouslySetInnerHTML={{__html: currentPlayer}} /></span></div>
+                <div className={`player player2 ${playerTurn === nextPlayer ? 'active' : ''}`}><span>Player 2: <b dangerouslySetInnerHTML={{__html: nextPlayer}} /></span></div>
             </div>)}
             <div className='draw-box'>{tie && (<p>Its a Tie</p>)}</div>
         </div>

@@ -4,6 +4,7 @@
     box-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1),
         10px 10px 10px rgba(0, 0, 0, 0.4);
     padding: 30px;
+    max-width: 404px;
 }
 
 .calculator input {

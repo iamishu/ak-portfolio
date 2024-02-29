@@ -6,6 +6,8 @@
     padding: 30px;
     display: grid;
     grid-template-columns: repeat(3, minmax(120px, 1fr));
+    max-width: 400px;
+    color: #fff;
 }
 
 .cell {
@@ -94,11 +96,21 @@
     text-align: center;
     text-decoration: underline;
     margin-bottom: 30px;
+    color: #fff;
     text-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1), 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 
 .player p.win {
     margin-top: 25px;
+    color: #ffb510;
+    font-weight: 600;
+    text-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1), 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+p.win {
+    text-align: center;
+    margin-top: -10px;
+    font-size: large;
     color: #ffb510;
     font-weight: 600;
     text-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1), 10px 10px 10px rgba(0, 0, 0, 0.4);

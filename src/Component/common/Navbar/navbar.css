@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-.desktopMenuListItem:hover, .active {
+.desktopMenuListItem:hover, .desktopMenuListItem.active {
     color: #ffb510;
     padding-bottom: 0.5rem;
     border-bottom: 3px solid #ffb510;
