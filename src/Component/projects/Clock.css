@@ -1,0 +1,64 @@
+.clock {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 2px solid #272727;
+    box-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1),
+    10px 10px 10px rgba(0, 0, 0, 0.4), 
+    inset -5px -5px 5px rgba(82, 82, 82, 0.2),
+    inset 10px 10px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.clock::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.clock span {
+    transform: rotate(calc(30deg * var(--h)));
+    inset: 15px;
+    position: absolute;
+    text-align: center;
+}
+
+.clock span b {
+    transform: rotate(calc(-30deg * var(--h)));
+    display: inline-block;
+    font-size: 16px;
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.9);
+    color: #cf9f00;
+}
+
+.hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hand i {
+    position: absolute;
+    width: var(--wd);
+    height: var(--ht);
+    border-radius: 8px;
+    background: var(--clr);
+    box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.9);
+}
+
+div#sec {
+    padding-top: 50px;
+}
+
+span.clock-dots {
+    inset: -4px;
+    font-size: 14px;
+}
